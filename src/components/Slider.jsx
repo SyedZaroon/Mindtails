@@ -1,6 +1,6 @@
 import { faArrowLeft, faArrowRight, faCircle, faClock, faMessage } from '@fortawesome/free-solid-svg-icons';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { assets } from '../assets/assets';
+import { assets } from '../utils/assets';
 import React, { useState, useEffect } from 'react';
 
 function Slider() {

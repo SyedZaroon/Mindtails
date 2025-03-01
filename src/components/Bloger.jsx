@@ -1,7 +1,7 @@
 import React from 'react'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook, faLinkedin, faPinterest, faTwitter, faVimeo } from '@fortawesome/free-brands-svg-icons'
-import { assets } from '../assets/assets'
+import { assets } from '../utils/assets'
 
 function bloger() {
   return (

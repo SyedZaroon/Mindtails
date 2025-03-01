@@ -1,12 +1,10 @@
 import React from "react";
 import Sidebar from "../components/Sidebar";
-import Postbox from "../components/Postbox";
 import Trandingpost from "../components/Trandingpost";
 import Hotnews from "../components/Hotnews";
-import { assets } from '../assets/assets'
+import { assets } from '../utils/assets'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faClock, faMessage } from "@fortawesome/free-solid-svg-icons";
-
 
 function Categories() {
   return (

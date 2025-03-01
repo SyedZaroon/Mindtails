@@ -1,10 +1,10 @@
 import React from 'react'
-import { assets } from '../assets/assets'
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faUser, faClock, faMessage } from "@fortawesome/free-solid-svg-icons";
+import { Link } from 'react-router-dom';
 
 function Postbox(props) {
-  console.log(props)
+
   return (
     <div>
       {/* Blog post 1 */}
@@ -67,12 +67,12 @@ function Postbox(props) {
             rest we on. Ignorant dwelling occasion ham for thoughts overcame
             off…
           </p>
-          <a
-            href=""
+          <Link
+            to={`/blog/${props.slug}`}
             className="paragraph text-black hover:text-primaryDarkColor font-bold"
           >
             Read More
-          </a>
+          </Link>
         </div>
       </div>
 

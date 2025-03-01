@@ -2,7 +2,7 @@ import React from 'react'
 import Trandingpost from "../components/Trandingpost"
 import Hotnews from "../components/Hotnews"
 import Sidebar from "../components/Sidebar"
-import post8 from "../assets/post-8.jpg"
+import post8 from "../../public/assets/post-8.jpg"
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faUser, faClock, faMessage } from "@fortawesome/free-solid-svg-icons"
 import Qoutation from '../components/Qoutation'
@@ -10,7 +10,7 @@ import Shareartical from '../components/Shareartical'
 import Bloger from '../components/Bloger'
 import Prenext from '../components/Prenext'
 import Contactus from '../components/Contactus'
-import {assets} from '../assets/assets'
+import { assets } from '../utils/assets'
 
 
 function Singleblog() {

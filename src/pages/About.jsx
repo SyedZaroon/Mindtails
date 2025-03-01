@@ -2,7 +2,7 @@ import React from 'react'
 import Sidebar from '../components/Sidebar'
 import Trandingpost from '../components/Trandingpost'
 import Hotnews from '../components/Hotnews'
-import about from '../assets/about.png'
+import about from '../../public/assets/about.png'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faFacebook, faLinkedin, faPinterest, faTwitter, faVimeo } from '@fortawesome/free-brands-svg-icons'
 

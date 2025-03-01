@@ -1,7 +1,7 @@
 import { faCross, faRemove } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import React from 'react'
-import { assets } from '../assets/assets'
+import { assets } from '../utils/assets'
 
 function Drawer() {
     return (

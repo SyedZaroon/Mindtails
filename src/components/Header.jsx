@@ -4,12 +4,34 @@ import { faSearch } from '@fortawesome/free-solid-svg-icons'
 import { faFacebookF } from '@fortawesome/free-brands-svg-icons/faFacebookF'
 import { faRemove } from '@fortawesome/free-solid-svg-icons'
 import { faBars } from '@fortawesome/free-solid-svg-icons/faBars'
-import { assets } from '../assets/assets'
+import { assets } from '../utils/assets'
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+import { Link } from 'react-router-dom'
+import { Blog } from '../data/Blog'
+
 
 
 function Header() {
   const [isDrawerOpen, setIsDrawerOpen] = useState(false);
+  const [search, setSearch] = useState(false);
+  const [query, setQuery] = useState("");
+
+
+  const handleChange = (event) => {
+    const value = event.target.value;
+    setQuery(value);
+    setSearch(value.length > 0);
+
+    if (value.length > 0) {
+      // Simulating an AJAX request (You can replace it with an API call)
+      const results = Blog.filter(blog =>
+        blog.title.toLowerCase().includes(value.toLowerCase()));
+      setFilteredBlogs(results);
+    } else {
+      setFilteredBlogs([]); // Clear results when search is empty
+    }
+  };
+
 
   useEffect(() => {
     if (isDrawerOpen) {
@@ -27,6 +49,7 @@ function Header() {
   const [textIndex, setTextIndex] = useState(0);
 
   useEffect(() => {
+
     const interval = setInterval(() => {
       setTextIndex((prevIndex) => (prevIndex + 1) % texts.length);
     }, 2000);
@@ -64,16 +87,45 @@ function Header() {
           <span className='absolute bottom-[0.5px] left-12 text-[0.75rem] text-textColor opacity-50 '>{texts[textIndex]}</span>
       </div>
 
-      <div className="header-drawer tablet:flex hidden justify-between items-center gap-2">
+        <div className="header-drawer tablet:flex hidden justify-between items-center gap-2 relative  ">
 
-        <div className="header-search-box bg-white border-[0.8px] border-borderColor  text-textColor subtext focus:outline-none w-60 flex justify-between items-center">
+          <div className=" header-search-box bg-white border-[0.8px] border-borderColor  text-textColor subtext focus:outline-none w-60 flex justify-between items-center">
 
-          <input type='text' placeholder='AJAX Live Search' className='p-1 rounded-t-sm'></input>
+            <input value={query}
+              onChange={handleChange} type='text' placeholder='Search' className='p-1 rounded-t-sm focus:outline-none  '></input>
 
           <div className='w-8 h-8 flex justify-center items-center   text-white hover:bg-primaryColor bg-primaryDarkColor'>
             <FontAwesomeIcon icon={faSearch} />
+            </div>
+
+            <div className={`post-box z-50 absolute top-10 bg-white p-4 w-full transition-all ${search ? "max-h-[200px] placeholder-opacity-100" : " opacity-0 max-h-0"}`}>
+              <div className='flex justify-between items-center mb-2'>
+                <span>{Blog.filter(post => post.title.toLowerCase().includes(query.toLowerCase())).length > 0 ? "Search Results" : "No Post Found"}</span>
+                <span
+                  onClick={() => {
+                    setQuery("");
+                    setSearch(false);
+                  }}
+                  className='cursor-pointer hover:text-primaryDarkColor '
+                >
+                  X
+                </span>
+              </div>
+
+              {Blog.filter(post => post.title.toLowerCase().includes(query.toLowerCase()))
+                .slice(0, 2)
+                .map((post, index) => (
+                  <div className='flex justify-between gap-2 items-center'>
+                    <img src={post.image} width={"50px"} className=' object-cover ' />
+                    <Link to={`/blog/${post.slug}`}> <p key={index} className="cursor-pointer hover:text-primaryColor py-2">{post.title}</p> </Link>
+                  </div>
+                ))}
+            </div>
+
+
           </div>
-        </div>
+
+
 
           <div onClick={() => setIsDrawerOpen(true)} id='headerbars' className='w-8 h-8 flex justify-center items-center rounded-[10%] text-white hover:bg-secondaryColor bg-secondaryDarkColor'>
           <FontAwesomeIcon icon={faBars} />
